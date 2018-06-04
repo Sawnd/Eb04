@@ -2,6 +2,8 @@
 #import database
 import pymysql.cursors
 import datetime
+
+
 db = pymysql.connect(host="localhost",
                        user="root",
                        passwd="",
@@ -14,7 +16,7 @@ temperature = 22
 query = "INSERT INTO Temperature ('Valeur') VALUES ('?')"
 query2 ="SELECT * FROM Temperature"
 
-cursor.execute("INSERT INTO Temperature ('Valeur') VALUES ('%d') " % temperature)
+cursor.execute("INSERT INTO Temperature (Valeur) VALUES ('%d') " % temperature)
 #cursor.execute(query2)
 db.commit()
 results = cursor.fetchall()
