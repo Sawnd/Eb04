@@ -3,16 +3,17 @@ import datetime
 import database
 import schedule
 import time
+import random
 
 
 def job():
-    temperature = 35
+    temperature = random.randint(0,100)
     database.cursor.execute("INSERT INTO Temperature (Valeur) VALUES ('%d') " % temperature)
     database.db.commit()
     print(temperature)
 
 
-schedule.every(10).seconds.do(job)
+schedule.every(30).seconds.do(job)
 while 1:
     schedule.run_pending()
     time.sleep(1)
