@@ -1,4 +1,9 @@
+#Librairie pour ajouter des fonctions à utiliser dans différentes pages
+
+
 import datetime
+
+
 
 def convert_date(x,y,z):
     orig_date = datetime.datetime(x,y,z)

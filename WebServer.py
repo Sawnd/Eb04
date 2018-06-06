@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 
+
+# Script pour lancer le serveur web
 import http.server
 
-PORT = 8888
+PORT = 8229
 server_address = ("", PORT)
 
 server = http.server.HTTPServer
