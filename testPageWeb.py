@@ -17,7 +17,7 @@ html2 = """"<DOCTYPE Html>
 <body>"""
 
 for data in results:
-    html2 += str(data['Valeur']) + "°  " + data['Heure'].strftime('%d/%m/%Y')
+    html2 += str(data['Valeur']) + "°  " + data['Heure'].strftime('%d/%m/%Y %H:%M')
     html2 +='<br>'
 
 print("Content-type: text/html; charset=utf-8\n")
