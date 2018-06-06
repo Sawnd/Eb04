@@ -1,10 +1,12 @@
 import cgi
+import plotly
 import cgitb
 import database
 cgitb.enable()
 
 #On récupère dans la base de données toutes les données de la table 'temperature'
 query='SELECT * FROM temperature ORDER BY Heure'
+
 database.cursor.execute(query)
 results = database.cursor.fetchall()
 
@@ -23,6 +25,9 @@ for data in results:
 print("Content-type: text/html; charset=utf-8\n")
 html2 += """</body>
 </html>"""
+
+planteForm = cgi.FieldStorage()
+
 
 print(html2)
 
