@@ -1,21 +1,17 @@
 import cgi
-import plotly
 import cgitb
 import database
 cgitb.enable()
 
-#On récupère dans la base de données toutes les données de la table 'temperature'
-query='SELECT * FROM temperature ORDER BY Heure'
-database.cursor.execute(query)
-results = database.cursor.fetchall()
 
 
-
-html2 = """"
+html2 = """
 <head>
     <title>Ajouter une plante</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    
 </head>
 <body>
+
 <form action='plante.py' method='post'>
             <label for='nom'>Nom:</label><input type="text" required id ='nom' name='nom'><br>
             <label for='temperature'>Temp&eacuterature optimale:</label><input type='text' id='temperature'><br>
@@ -31,13 +27,14 @@ html2 += """</body>
 </html>"""
 
 planteForm = cgi.FieldStorage()
-nom = planteForm.getvalue('nom')
-temperature = planteForm.getvalue('temperature')
-humidite =planteForm.getvalue('humidite')
-ensoleillement = planteForm.getvalue('ensoleillement')
-database.cursor.execute("INSERT INTO plante (Nom,Temperature,Humidite,Ensoleillement) VALUES ('%s','%d','%d','%d')"
-                        % nom, temperature, humidite, ensoleillement)
 
+nom = str(planteForm.getvalue('nom'))
+temperature = planteForm.getvalue('temperature')
+humidite = planteForm.getvalue('humidite')
+ensoleillement = planteForm.getvalue('ensoleillement')
+database.cursor.execute("INSERT INTO plante (Nom,Temperature,Humidite,Ensoleillement) VALUES ('{0}','{1}','{2}','{3}')"
+                        .format(nom, temperature, humidite, ensoleillement))
+database.db.commit()
 
 print(html2)
 
