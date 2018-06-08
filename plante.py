@@ -9,15 +9,18 @@ html2 = """
 <head>
     <title>Ajouter une plante</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 </head>
 <body>
-
-<form action='plante.py' method='post'>
-            <label for='nom'>Nom:</label><input type="text" required id ='nom' name='nom'><br>
-            <label for='temperature'>Temp&eacuterature optimale:</label><input type='text' id='temperature'><br>
-            <label for='humidite'>Humidit&eacute optimale:</label><input type='text' id='humidite' name="humidite"><br>
-            <label for='ensoleillement'>Ensoleillement optimal:</label><input type='text' name="ensoleillement" id='ensoleillement'><br>
+<h1> Ajouter une plante </h1>
+<form class='cf' action='plante.py' method='post'>
+            <div class='cf left'>
+           <input type="text" required id ='nom' name='nom' placeholder='Nom'><br>
+            <input type='text' id='temperature' placeholder='Temperature'><br>
+            <input type='text' id='humidite' name="humidite" placeholder='Humidit&eacute'><br>
+            <input type='text' name="ensoleillement" id='ensoleillement' placeholder='Ensoleillement optimal'><br>
             <input type="submit" value="Ajouter">
+            </div>
         </form>
     
 """
