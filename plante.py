@@ -1,18 +1,14 @@
 import cgi
 import cgitb
 import database
+import html
 cgitb.enable()
 
 
+html2 = html.header
+html2 += """
 
-html2 = """
-<head>
-    <title>Ajouter une plante</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
-</head>
-<body>
+
 <h1> Ajouter une plante </h1>
 <form class='cf' action='plante.py' method='post'>
             <div class='cf left'>
@@ -40,12 +36,9 @@ for p in plantes:
 liste += """</tbody>
 </table>
 """
-
-
-print("Content-type: text/html; charset=utf-8\n")
 html2 += liste
 html2 += """</body>
-</html>"""
+</html>""" + html.footer
 
 planteForm = cgi.FieldStorage()
 
@@ -54,9 +47,9 @@ temperature = planteForm.getvalue('temperature')
 humidite = planteForm.getvalue('humidite')
 ensoleillement = planteForm.getvalue('ensoleillement')
  #On verifie que le formulaire nn'est pas vide
-if(nom != 'None'):
-    database.cursor.execute("INSERT INTO plante (Nom,Temperature,Humidite,Ensoleillement) VALUES ('{0}','{1}','{2}','{3}')"
-                            .format(nom, temperature, humidite, ensoleillement))
+if nom != 'None':
+    database.cursor.execute("INSERT INTO plante (Nom,Temperature,Humidite,Ensoleillement)"
+                            " VALUES ('{0}','{1}','{2}','{3}')".format(nom, temperature, humidite, ensoleillement))
     database.db.commit()
 
 print(html2)
