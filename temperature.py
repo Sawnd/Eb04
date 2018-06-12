@@ -6,8 +6,6 @@ import cgi
 query1='SELECT * FROM temperature ORDER BY Heure LIMIT 20'
 database.cursor.execute(query1)
 results1 = database.cursor.fetchall()
-database.cursor.execute(query2)
-results2 = database.cursor.fetchall()
 
 data = {}
 data["temperature"] = []
