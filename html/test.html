@@ -71,7 +71,21 @@ time.setSeconds(00);
 time.setMilliseconds(00);
 
 function updateChart(count) {
-    
+    var url = "/temperature.py"
+    var dataJson = $.ajax({
+  dataType: "json",
+  url: url,
+  data: '',
+  success: function (data) {
+      console.log('success');
+      $("#test").addClass('cool');
+  }
+})
+    if(dataJson != null){
+        console.log(dataJson)
+    }else{
+        console.log('null')
+    }
 	count = count || 1;
 	var deltaY1, deltaY2;
 	for (var i = 0; i < count; i++) {
@@ -111,4 +125,5 @@ setInterval(function(){updateChart()}, updateInterval);
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </body>
+<div id="test"></div>
 </html>

@@ -1,7 +1,6 @@
 import database
 import json
 import html
-import cgi
 
 query2='SELECT * FROM humidite ORDER BY Date LIMIT 20'
 database.cursor.execute(query2)

@@ -1,5 +1,4 @@
 #from HTU21D import HTU21D
-import datetime
 import database
 import schedule
 import time

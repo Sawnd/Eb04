@@ -1,5 +1,4 @@
 import cgi
-import plotly
 import cgitb
 import database
 cgitb.enable()

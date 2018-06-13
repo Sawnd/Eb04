@@ -1,7 +1,5 @@
-import cgi
+
 import cgitb
-import database
-import html
 import plante
 cgitb.enable()
 

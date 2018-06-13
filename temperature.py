@@ -1,7 +1,6 @@
 import database
 import json
 import html
-import cgi
 
 query1='SELECT * FROM temperature ORDER BY Heure LIMIT 20'
 database.cursor.execute(query1)
@@ -14,7 +13,9 @@ for t in results1:
     temp[t['Valeur']]=t['Heure'].strftime('%d/%m/%Y %H:%M')
     data["temperature"].append(temp)
 
-print(html.header)
+print("""
+    """)
+#print(html.header)
 print(json.dumps(data, indent=6))
-print(html.footer)
+
 
