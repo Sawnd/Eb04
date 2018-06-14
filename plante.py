@@ -14,13 +14,19 @@ query2 ='SELECT * FROM plante ORDER BY Nom'
 cursor =database.cursor.execute(query2)
 plantes = database.cursor.fetchall()
 liste = """
-<table class='pure-table'><thead><th>Plante</th><th>Temperature</th><th>Humidite</th><th>Ensoleillement</th></thead>
+<div id='liste-plantes'>
+<h1>Liste de plantes</h1>
+<table class='pure-table center ' style="
+    margin:  auto;"
+><thead><th>Plante</th><th>Temperature</th><th>Humidite</th><th>Ensoleillement</th></thead>
 <tbody>"""
 for p in plantes:
     liste += "<tr><td>" + str(p['Nom']) + "</td><td>" + str(p['Temperature']) + "</td><td>" +\
              str(p['Humidite']) + "</td><td>" + str(p["Ensoleillement"]) + "</td></tr>"
 liste += """</tbody>
 </table>
+</div>
+
 """
 html2 += liste
 html2 += """</body>

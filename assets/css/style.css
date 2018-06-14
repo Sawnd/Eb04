@@ -90,3 +90,6 @@ form input, textarea {
 .cf:after {
     clear: both;
 }
+.center{
+    margin: auto;
+}

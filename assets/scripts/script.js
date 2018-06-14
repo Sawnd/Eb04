@@ -26,10 +26,10 @@ var dataPoints2 = [];
 var chart = new CanvasJS.Chart("chartContainer", {
 	zoomEnabled: true,
 	title: {
-		text: "Share Value of Two Companies"
+		text: "Relevés de température et d'humidité en temps-réel"
 	},
 	axisX: {
-		title: "chart updates every 3 secs"
+		title: "temps"
 	},
 	axisY:{
 		prefix: "",
@@ -133,7 +133,7 @@ if(isInit!=null){
 
 
 	// updating legend text with  updated with y Value
-	chart.options.data[0].legendText = "Température " + yValue1;
+	chart.options.data[0].legendText = "Température " + yValue1 + "°";
 	chart.options.data[1].legendText = " Humidité " + yValue2;
 	chart.render();
   }
