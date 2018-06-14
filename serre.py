@@ -14,7 +14,7 @@ formulaireSerre = """
             <div class='cf left'>
            <input type="text" required id ='nom' name='nom' placeholder='Nom'><br>
            <input type="text" disabled placeholder='Plante(s)'><br>
-           <select id="serre" placeholder='Plante'' ><option=''></option>"""
+           <select id="select-serre" multiple ><option=''></option>"""
 for p in listePlantes:
     formulaireSerre += "<option value ='" + str(p["ID"]) + "'>" + p["Nom"] +"</option>"
 formulaireSerre += """

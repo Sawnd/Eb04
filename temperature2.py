@@ -1,7 +1,6 @@
 import database
 import json
-import http.server
-import html
+
 
 query1 = 'SELECT * FROM temperature WHERE DATEDIFF(NOW(),Heure) = 0 ORDER BY Heure DESC limit 1'
 query2 = 'SELECT * FROM humidite WHERE DATEDIFF(NOW(),Date) = 0 ORDER BY Date DESC limit 1'

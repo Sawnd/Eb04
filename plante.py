@@ -13,27 +13,16 @@ query2 ='SELECT * FROM plante ORDER BY Nom'
 
 cursor =database.cursor.execute(query2)
 plantes = database.cursor.fetchall()
-liste = """
-<div id='liste-plantes'>
-<h1>Liste de plantes</h1>
-<table class='pure-table center ' style="
-    margin:  auto;"
-><thead><th>Plante</th><th>Temperature</th><th>Humidite</th><th>Ensoleillement</th></thead>
-<tbody>"""
+liste = html.listePlanteHaut
 for p in plantes:
     liste += "<tr><td>" + str(p['Nom']) + "</td><td>" + str(p['Temperature']) + "</td><td>" +\
              str(p['Humidite']) + "</td><td>" + str(p["Ensoleillement"]) + "</td></tr>"
-liste += """</tbody>
-</table>
-</div>
-
-"""
+liste += html.listePlanteBas
 html2 += liste
 html2 += """</body>
 </html>""" + html.footer
-
+# Traitement du formulaire
 planteForm = cgi.FieldStorage()
-
 nom = str(planteForm.getvalue('nom'))
 temperature = planteForm.getvalue('temperature')
 humidite = planteForm.getvalue('humidite')

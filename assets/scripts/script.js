@@ -195,4 +195,16 @@ setInterval(function(){
 
     updateChart()}, updateInterval);
 
-}
+};
+$(document).ready(function () {
+    var select = document.getElementById('select-serre');
+multi( select,{
+  // enable search
+  enable_search: true,
+  // placeholder of search input
+  search_placeholder: 'Rechercher une plante.',
+  non_selected_header: null,
+  selected_header: null
+})
+})
+
