@@ -81,20 +81,25 @@ var yValue2 = 1;
 
  var time = new Date;
 // starting at 9.30 am
-time.setHours(17);
-time.setMinutes(22);
-time.setSeconds(0);
-time.setMilliseconds(0);
-function updateChart(count) {
-    var url = "/temperature.py";
+// time.setHours(17);
+// time.setMinutes(22);
+// time.setSeconds(0);
+// time.setMilliseconds(0);
+function updateChart(isInit) {
+    var url=null;
+if(isInit!=null){
+     url = "/temperature2.py";
+}else{
+    url="/temperature2.py"
+}
+
     var dataJson = null;
 	$.ajax({
   dataType: "json",
   url: url,
-  data: "",
   success: function (data) {
 
-     // dataPoints1 =[];
+
       console.log('success');
       //dataJson =data;
       var temperatures=data.temperatures
@@ -103,17 +108,15 @@ function updateChart(count) {
      // time.setTime(time.getTime())
 
 	for(var t in temperatures){
-		var temperature = temperatures[t];
-		deltaY1 = .5 + Math.random() *(-.5-.5);
-		deltaY2 = .5 + Math.random() *(-.5-.5);
 
+		var temperature = temperatures[t];
 	// adding random value and rounding it to two digits.
 	yValue1 = temperature['valeur'];
-	temperature.find
 	var d = new Date(temperature['temps']);
 	yValue2 = Math.round((yValue2 + deltaY2)*100)/100;
 
 	// pushing the new values
+
 	dataPoints1.push({
 		x: d.getTime(),
 		y: yValue1
@@ -122,6 +125,7 @@ function updateChart(count) {
 		x: time.getTime(),
 		y: yValue2
 	});
+
 	}
 
 	// updating legend text with  updated with y Value
@@ -132,7 +136,6 @@ function updateChart(count) {
 })
 
 	//count = count || 1;
-	count= 20
 
 
 	/*for (var i = 0; i < count; i++) {
@@ -182,7 +185,10 @@ function updateChart(count) {
 	chart.render();*/
 }
 // generates first set of dataPoints
-updateChart(100);
-setInterval(function(){updateChart()}, updateInterval);
+updateChart(true);
+
+setInterval(function(){
+
+    updateChart()}, updateInterval);
 
 }
