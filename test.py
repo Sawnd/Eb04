@@ -7,7 +7,7 @@ import random
 
 def job():
     temperature = random.randint(0,100)
-    database.cursor.execute("INSERT INTO humidite (Valeur) VALUES ('%d') " % temperature)
+    database.cursor.execute("INSERT INTO temperature (Valeur) VALUES ('%d') " % temperature)
     database.db.commit()
     print(temperature)
 
