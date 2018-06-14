@@ -76,16 +76,15 @@ function toggleDataSeries(e) {
 
 var updateInterval = 3000;
 // initial value
-var yValue1 = 600;
-var yValue2 = 605;
+var yValue1 = 0;
+var yValue2 = 1;
 
-var time = new Date;
+ var time = new Date;
 // starting at 9.30 am
-time.setHours(0);
-time.setMinutes(0);
+time.setHours(17);
+time.setMinutes(22);
 time.setSeconds(0);
 time.setMilliseconds(0);
-
 function updateChart(count) {
     var url = "/temperature.py";
     var dataJson = null;
@@ -94,12 +93,14 @@ function updateChart(count) {
   url: url,
   data: "",
   success: function (data) {
+
+     // dataPoints1 =[];
       console.log('success');
       //dataJson =data;
       var temperatures=data.temperatures
 	  var deltaY1, deltaY2;
-      
-      time.setTime(time.getTime())
+
+     // time.setTime(time.getTime())
 
 	for(var t in temperatures){
 		var temperature = temperatures[t];
@@ -108,6 +109,7 @@ function updateChart(count) {
 
 	// adding random value and rounding it to two digits.
 	yValue1 = temperature['valeur'];
+	temperature.find
 	var d = new Date(temperature['temps']);
 	yValue2 = Math.round((yValue2 + deltaY2)*100)/100;
 
