@@ -103,6 +103,7 @@ if(isInit!=null){
       console.log('success');
       //dataJson =data;
       var temperatures=data.temperatures
+      var humidites=data.humidites
 	  var deltaY1, deltaY2;
 
      // time.setTime(time.getTime())
@@ -110,10 +111,12 @@ if(isInit!=null){
 	for(var t in temperatures){
 
 		var temperature = temperatures[t];
+		var humidite = humidites[t];
 	// adding random value and rounding it to two digits.
 	yValue1 = temperature['valeur'];
 	var d = new Date(temperature['temps']);
-	yValue2 = Math.round((yValue2 + deltaY2)*100)/100;
+	var d2 = new Date(humidite['temps'])
+	yValue2 =humidite['valeur'];
 
 	// pushing the new values
 
@@ -122,14 +125,15 @@ if(isInit!=null){
 		y: yValue1
 	});
 	dataPoints2.push({
-		x: time.getTime(),
+		x: d2.getTime(),
 		y: yValue2
 	});
 
 	}
 
+
 	// updating legend text with  updated with y Value
-	chart.options.data[0].legendText = "Température" + yValue1;
+	chart.options.data[0].legendText = "Température " + yValue1;
 	chart.options.data[1].legendText = " Humidité " + yValue2;
 	chart.render();
   }
