@@ -1,11 +1,12 @@
 import cgi
 import cgitb
-import plante
+from data import query
+import html
 import database
 cgitb.enable()
 
-
-listePlantes=plante.plantes
+html2 = html.header
+listePlantes=query.plantes
 
 formulaireSerre = """
 <div id='serre'>
@@ -25,11 +26,13 @@ formulaireSerre += """
         </form>
 </div>
 """
-html2=formulaireSerre
+html2 += formulaireSerre
 
 # Traitement du formulaire
+
 serreForm = cgi.FieldStorage()
 nom = str(serreForm.getvalue('nom-serre'))
+html2+= nom
 select = serreForm.getvalue('select-serre')
 
  #On verifie que le formulaire n'est pas vide
@@ -45,7 +48,7 @@ if nom != 'None':
         IDSerre = int(results['ID'])
         if select:
             for plante in select:
-                database.cursor.execute("INSERT INTO serre (ID, Nom) VALUES ('{0},{1}')".format(IDSerre,nom))
+                database.cursor.execute("INSERT INTO serre_plante (IDSerre, IDPlante) VALUES ('{0}','{1}')".format(IDSerre,plante))
                 database.db.commit()
-
+html2+= html.footer
 print(html2)

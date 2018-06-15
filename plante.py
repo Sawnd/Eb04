@@ -2,6 +2,7 @@ import cgi
 import cgitb
 import database
 import html
+from data import query
 cgitb.enable()
 
 
@@ -9,10 +10,11 @@ html2 = html.header
 html2 += html.formulairePlante
 
 # Tableaux contenant la liste des plantes
-query2 ='SELECT * FROM plante ORDER BY Nom'
+#query2 ='SELECT * FROM plante ORDER BY Nom'
 
-cursor =database.cursor.execute(query2)
-plantes = database.cursor.fetchall()
+#cursor =database.cursor.execute(query2)
+#plantes = database.cursor.fetchall()
+plantes = query.plantes
 liste = html.listePlanteHaut
 for p in plantes:
     liste += "<tr><td>" + str(p['Nom']) + "</td><td>" + str(p['Temperature']) + "</td><td>" +\
