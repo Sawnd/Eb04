@@ -9,7 +9,13 @@ header = """<html>
     <script src="/assets/scripts/multi.js"></script>
 
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
-</head><body><div id="chartContainer" style="height: 370px; width: 100%;"></div>"""
+</head><body><div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+<div id='data'>
+    <input type='text' value='' id='value-temperature'>
+    <input type='text' value='' id='value-humidite'>
+    <input type='text'  disable id='value-ensoleillement'>
+</div>"""
 
 footer = """<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>

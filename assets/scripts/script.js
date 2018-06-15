@@ -44,7 +44,17 @@ var chart = new CanvasJS.Chart("chartContainer", {
 			dataPoints: dataPoints2
 	}]
 });
-
+function changeColor() {
+		var temp = $('#value-temperature').val()
+		$('.temperature').each(function () {
+			var valeur =$(this).val()
+			if((valeur<temp-5) || valeur>temp+5){
+				$(this).css('background-color', 'red');
+			}else{
+				$(this).css('background-color', 'green');
+			}
+        })
+    };
 function toggleDataSeries(e) {
 	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
 		e.dataSeries.visible = false;
@@ -116,6 +126,14 @@ if(isInit!=null){
 	// updating legend text with  updated with y Value
 	chart.options.data[0].legendText = "Température " + yValue1 + "°";
 	chart.options.data[1].legendText = " Humidité " + yValue2;
+	// Je rajoute les valeurs en caché sur la page
+	  $("#value-temperature").each(function () {
+		 $(this).val(yValue1);
+      });
+	  $("#value-humidite").each(function () {
+		 $(this).val(yValue2);
+      })
+	  changeColor();
 	chart.render();
   }
 })
@@ -179,15 +197,18 @@ setInterval(function(){
 };
 $(document).ready(function () {
     var select = document.getElementById('select-serre');
-multi( select,{
+	multi( select,{
   // enable search
   enable_search: true,
   // placeholder of search input
   search_placeholder: 'Rechercher une plante.',
   non_selected_header: null,
   selected_header: null
-})
 });
 
+
+});
+
+//
 
 
