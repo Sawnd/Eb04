@@ -64,8 +64,8 @@ for serre in listeSerres:
     database.cursor.execute("SELECT serre.Nom AS serre,plante.Nom As plante, plante.Temperature,plante.Humidite,plante.Ensoleillement  FROM serre_plante INNER JOIN plante on serre_plante.IDPlante = plante.ID INNER JOIN serre ON serre_plante.IDSerre = serre.ID WHERE IDSerre='{0}' ".format(ID_serre))
     listePlantes_serres = database.cursor.fetchall()
     for plante_serre in listePlantes_serres:
-        htmlSerre += "<tr><td>" +str(plante_serre['plante']) + "</td><td>"+ str(plante_serre['Temperature']) + "</td><td>" + \
-                 str(plante_serre['Humidite']) + "</td><td>" + str(plante_serre["Ensoleillement"]) + "</td></tr>"
+        htmlSerre += "<tr><td >" +str(plante_serre['plante']) + "</td><td class='temperature'>"+ str(plante_serre['Temperature']) + "</td><td class='humidite'>" + \
+                 str(plante_serre['Humidite']) + "</td><td class='ensoleillement'>" + str(plante_serre["Ensoleillement"]) + "</td></tr>"
     htmlSerre +="""</tbody></table>"""
 
 html2+=htmlSerre

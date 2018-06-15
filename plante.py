@@ -17,8 +17,8 @@ html2 += html.formulairePlante
 plantes = query.plantes
 liste = html.listePlanteHaut
 for p in plantes:
-    liste += "<tr><td>" + str(p['Nom']) + "</td><td>" + str(p['Temperature']) + "</td><td>" +\
-             str(p['Humidite']) + "</td><td>" + str(p["Ensoleillement"]) + "</td></tr>"
+    liste += "<tr><td>" + str(p['Nom']) + "</td><td class='temperature'>" + str(p['Temperature']) + "</td><td class='humidite'>" +\
+             str(p['Humidite']) + "</td><td class='ensoleillement'>" + str(p["Ensoleillement"]) + "</td></tr>"
 liste += html.listePlanteBas
 html2 += liste
 html2 += """</body>
