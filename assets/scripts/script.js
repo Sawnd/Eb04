@@ -48,10 +48,11 @@ function changeColor() {
 		var temp = $('#value-temperature').val()
 		$('.temperature').each(function () {
 			var valeur =$(this).val()
-			if((valeur<temp-5) || valeur>temp+5){
-				$(this).css('background-color', 'red');
-			}else{
+			// Tolérance de +- degrés
+			if((valeur>temp-5) && (valeur < temp+5)){
 				$(this).css('background-color', 'green');
+			}else{
+				$(this).css('background-color', 'red');
 			}
         })
     };
@@ -83,8 +84,6 @@ if(isInit!=null){
 }else{
     url="/temperature2.py"
 }
-
-    var dataJson = null;
 	$.ajax({
   dataType: "json",
   url: url,

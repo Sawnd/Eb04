@@ -93,3 +93,7 @@ form input, textarea {
 .center{
     margin: auto;
 }
+
+h2{
+    text-align: center;
+}

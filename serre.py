@@ -32,7 +32,6 @@ html2 += formulaireSerre
 
 serreForm = cgi.FieldStorage()
 nom = str(serreForm.getvalue('nom-serre'))
-html2 += nom
 select = serreForm.getvalue('select-serre')
 
  #On verifie que le formulaire n'est pas vide
@@ -50,7 +49,7 @@ if nom != 'None':
             for plante in select:
                 database.cursor.execute("INSERT INTO serre_plante (IDSerre, IDPlante) VALUES ('{0}','{1}')".format(IDSerre,plante))
                 database.db.commit()
-html2 += html.footer
+
 
 #On affiche les serres
 listeSerres=query.liste_serres
@@ -70,9 +69,6 @@ for serre in listeSerres:
 
 html2+=htmlSerre
 
-
-
-
-
+html2 += html.footer
 
 print(html2)
