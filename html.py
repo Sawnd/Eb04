@@ -23,7 +23,7 @@ formulairePlante="""
 <form class='cf' action='plante.py' method='post'>
             <div class='cf left'>
            <input type="text" required id ='nom' name='nom' placeholder='Nom'><br>
-            <input type='text' id='temperature' placeholder='Temperature'><br>
+            <input type='text' id='temperature' name='temperature' placeholder='Temperature'><br>
             <input type='text' id='humidite' name="humidite" placeholder='Humidit&eacute'><br>
             <input type='text' name="ensoleillement" id='ensoleillement' placeholder='Ensoleillement optimal'><br>
             <input type="submit" value="Ajouter">

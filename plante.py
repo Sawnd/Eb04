@@ -30,8 +30,9 @@ ensoleillement = planteForm.getvalue('ensoleillement')
  #On verifie que le formulaire n'est pas vide
 if nom != 'None':
     database.cursor.execute("INSERT INTO plante (Nom,Temperature,Humidite,Ensoleillement)"
-                            " VALUES ('{0}','{1}','{2}','{3}')".format(nom, temperature, humidite, ensoleillement))
+                            " VALUES ('{0}','{1}','{2}','{3}')".format(nom,temperature, humidite, ensoleillement))
     database.db.commit()
+
 
 print(html2)
 
