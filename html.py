@@ -13,14 +13,28 @@ header = """<html>
 </head><body><div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
 <div id='data'>
-    <input type='text' value='' id='value-temperature'>
-    <input type='text' value='' id='value-humidite'>
-    <input type='text'  disable id='value-ensoleillement'>
+    <input type='text' value='' id='value-temperature' disabled hidden>
+    <input type='text' value='' id='value-humidite' disabled hidden>
+    <input type='text'  disable id='value-ensoleillement' disabled hidden>
 </div>"""
 
-footer = """<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+footer = """
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Surveillance de serre</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="serre.py">Mes serres</a></li>
+      <li><a href="plante.py">Mes plantes</a></li>
+    </ul>
+  </div>
+</nav>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="/assets/scripts/script.js"></script>
+<br><br><br><br>
 </body></html>"""
 
 formulairePlante="""

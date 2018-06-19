@@ -7,7 +7,7 @@ var dataPoints3 = [];
 var chart = new CanvasJS.Chart("chartContainer", {
 	zoomEnabled: true,
 	title: {
-		text: "Relevés de température, d'ensoelillement et d'humidité en temps-réel"
+		text: "Relevés de température, d'ensoleillement et d'humidité en temps-réel"
 	},
 	axisX: {
 		title: "temps"
