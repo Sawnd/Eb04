@@ -45,7 +45,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	}]
 });
 function changeColor() {
-		var temp = $('#value-temperature').val()
+		var temp = $('#value-temperature').val();
 		$('.temperature').each(function () {
 			var valeur =$(this).val()
 			// Tolérance de +- degrés
@@ -54,7 +54,28 @@ function changeColor() {
 			}else{
 				$(this).css('background-color', 'red');
 			}
-        })
+        });
+		var hum = $('#value-humidite').val();
+		$('.humidite').each(function () {
+			var valeur2 =$(this).val()
+			// Tolérance de +- pourcent
+			if((valeur2>hum-5) && (valeur2 < hum+5)){
+				$(this).css('background-color', 'green');
+			}else{
+				$(this).css('background-color', 'red');
+			}
+        });
+		var ensol = $('#value-ensoleillement').val();
+		$('.ensoleillement').each(function () {
+			var valeur3 =$(this).val()
+			// Tolérance de +- degrés
+			if((valeur3>ensol-5) && (valeur3 < ensol+5)){
+				$(this).css('background-color', 'green');
+			}else{
+				$(this).css('background-color', 'red');
+			}
+        });
+
     };
 function toggleDataSeries(e) {
 	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
