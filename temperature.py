@@ -5,11 +5,14 @@ import html
 
 query1 = 'SELECT * FROM temperature WHERE DATEDIFF(NOW(),Heure) = 0 ORDER BY Heure DESC limit 100'
 query2 = 'SELECT * FROM humidite WHERE DATEDIFF(NOW(),Date) = 0 ORDER BY Date DESC limit 100'
+query3=  'SELECT * FROM ensoleillement WHERE DATEDIFF(NOW(),Date = 0 ORDER BY Date DESC limit 100)'
 
 database.cursor.execute(query1)
 results1 = database.cursor.fetchall()
 database.cursor.execute(query2)
 results2 = database.cursor.fetchall()
+database.cursor.execute(query3)
+results3=database.cursor.fetchall()
 
 data = {}
 data["temperatures"] = []

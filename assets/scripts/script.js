@@ -7,7 +7,7 @@ var dataPoints3 = [];
 var chart = new CanvasJS.Chart("chartContainer", {
 	zoomEnabled: true,
 	title: {
-		text: "Relevés de température et d'humidité en temps-réel"
+		text: "Relevés de température, d'ensoelillement et d'humidité en temps-réel"
 	},
 	axisX: {
 		title: "temps"
@@ -97,8 +97,8 @@ function toggleDataSeries(e) {
 var updateInterval = 3000;
 // initial value
 var yValue1 = 0;
-var yValue2 = 1;
-
+var yValue2 = 0;
+var yValue3= 0;
  var time = new Date;
 // starting at 9.30 am
 // time.setHours(17);
@@ -122,6 +122,7 @@ if(isInit!=null){
       //dataJson =data;
       var temperatures=data.temperatures
       var humidites=data.humidites
+      var ensoleillements=data.ensoleillements
 	  var deltaY1, deltaY2;
 
      // time.setTime(time.getTime())
@@ -130,11 +131,15 @@ if(isInit!=null){
 
 		var temperature = temperatures[t];
 		var humidite = humidites[t];
+		var ensoleillement = ensoleillements[t];
 	// adding random value and rounding it to two digits.
-	yValue1 = temperature['valeur'];
+	    yValue1 = temperature['valeur'];
+		yValue2 =humidite['valeur'];
+		yValue3 =ensoleillement['valeur'];
 	var d = new Date(temperature['temps']);
-	var d2 = new Date(humidite['temps'])
-	yValue2 =humidite['valeur'];
+	var d2 = new Date(humidite['temps']);
+	var d3 = new Date(ensoleillement['temps']);
+
 
 	// pushing the new values
 
@@ -147,8 +152,8 @@ if(isInit!=null){
 		y: yValue2
 	});
 	dataPoints3.push({
-		x: d2.getTime(),
-		y: yValue2/2
+		x: d3.getTime(),
+		y: yValue3
 	});
 
 	}
@@ -156,14 +161,18 @@ if(isInit!=null){
 
 	// updating legend text with  updated with y Value
 	chart.options.data[0].legendText = "Température " + yValue1 + "°";
-	chart.options.data[1].legendText = " Humidité " + yValue2;
+	chart.options.data[1].legendText = " Humidité " + yValue2 + "%";
+	chart.options.data[2].legendText = " Ensoleillement " + yValue3 + "%";
 	// Je rajoute les valeurs en caché sur la page
 	  $("#value-temperature").each(function () {
 		 $(this).val(yValue1);
       });
 	  $("#value-humidite").each(function () {
 		 $(this).val(yValue2);
-      })
+      });
+	  $("#value-ensoleillement").each(function () {
+		 $(this).val(yValue3);
+      });
 	  changeColor();
 	chart.render();
   }

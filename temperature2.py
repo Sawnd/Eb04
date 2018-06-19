@@ -16,7 +16,7 @@ results3 = database.cursor.fetchall()
 data = {}
 data["temperatures"] = []
 data["humidites"]= []
-data["ensoleillement"]=[]
+data["ensoleillements"]=[]
 for t in results1:
     temp = {}
     temp['valeur'] = t['Valeur']
@@ -31,7 +31,7 @@ for e in results3:
     ens = {}
     ens['valeur'] = e['Valeur']
     ens['temps'] = e['Date'].strftime('%Y-%m-%dT%H:%M:%S')
-    data["ensoleillement"].append(ens)
+    data["ensoleillements"].append(ens)
 
 print("""
     """)
