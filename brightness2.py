@@ -8,8 +8,11 @@ import Image
 import  database
 import datetime
 
+uri ='/root/test_xeno/projet/'
+image ='image.jpg'
+uri+=image
 def m():
-	im=Image.open('/root/test_xeno/projet/image.jpg').convert('L')
+	im=Image.open(uri).convert('L')
 	stat=ImageStat.Stat(im)
 	e=stat.rms[0]
 	b=e*100/255
@@ -18,9 +21,9 @@ def m():
 
 camera=PiCamera()
 sleep(5)
-image=camera.capture('/root/test_xeno/projet/image.jpg')
+image=camera.capture(uri)
 br=m()
-os.remove('/root/test_xeno/projet/image.jpg')	 
+os.remove(uri)
 
 database.cursor.execute("INSERT into ensoleillement (Valeur) values('%d')"%br)
 database.db.commit()
