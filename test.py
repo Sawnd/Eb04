@@ -6,8 +6,9 @@ import random
 
 
 def job():
-    temperature = random.randint(0,100)
-    humidite = random.randint(0,200)
+    temperature = random.randint(-10,90)
+    humidite = random.randint(0,100)
+    ensoleillement = random.randint(0,100)
     database.cursor.execute("INSERT INTO temperature (Valeur) VALUES ('%d') " % temperature)
     database.db.commit()
     print("temperature")
@@ -17,6 +18,10 @@ def job():
     database.db.commit()
     print("humidite")
     print(humidite)
+    database.cursor.execute("INSERT INTO ensoleillement (Valeur) VALUES ('%d') " %ensoleillement)
+    database.db.commit()
+    print("ensoleillement")
+    print(ensoleillement)
 
 
 

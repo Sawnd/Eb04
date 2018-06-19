@@ -3,7 +3,7 @@ window.onload = function () {
 
 var dataPoints1 = [];
 var dataPoints2 = [];
-
+var dataPoints3 = [];
 var chart = new CanvasJS.Chart("chartContainer", {
 	zoomEnabled: true,
 	title: {

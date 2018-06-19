@@ -58,7 +58,7 @@ for serre in listeSerres:
     ID_serre = serre['ID']
     htmlSerre += "<h2>"+serre['Nom']+"""</h2><br><table class='pure-table center ' style="
     margin:  auto;"
-><thead><th>Plante</th><th>Temperature</th><th>Humidite</th><th>Ensoleillement</th></thead>
+><thead><th>Plante</th><th>Temperature (°) </th><th>Humidite (%)</th><th>Ensoleillement</th></thead>
 <tbody>"""
     database.cursor.execute("SELECT serre.Nom AS serre,plante.Nom As plante, plante.Temperature,plante.Humidite,plante.Ensoleillement  FROM serre_plante INNER JOIN plante on serre_plante.IDPlante = plante.ID INNER JOIN serre ON serre_plante.IDSerre = serre.ID WHERE IDSerre='{0}' ".format(ID_serre))
     listePlantes_serres = database.cursor.fetchall()
