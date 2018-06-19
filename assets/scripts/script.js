@@ -45,9 +45,9 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	}]
 });
 function changeColor() {
-		var temp = $('#value-temperature').val();
+		var temp = Number($('#value-temperature').val());
 		$('.temperature').each(function () {
-			var valeur =$(this).val()
+			var valeur =Number($(this)["0"].innerHTML);
 			// Tolérance de +- degrés
 			if((valeur>temp-5) && (valeur < temp+5)){
 				$(this).css('background-color', 'green');
@@ -55,9 +55,9 @@ function changeColor() {
 				$(this).css('background-color', 'red');
 			}
         });
-		var hum = $('#value-humidite').val();
+		var hum = Number($('#value-humidite').val());
 		$('.humidite').each(function () {
-			var valeur2 =$(this).val()
+			var valeur2 =Number($(this)["0"].innerHTML);
 			// Tolérance de +- pourcent
 			if((valeur2>hum-5) && (valeur2 < hum+5)){
 				$(this).css('background-color', 'green');
@@ -65,9 +65,9 @@ function changeColor() {
 				$(this).css('background-color', 'red');
 			}
         });
-		var ensol = $('#value-ensoleillement').val();
+		var ensol = Number($('#value-ensoleillement').val());
 		$('.ensoleillement').each(function () {
-			var valeur3 =$(this).val()
+			var valeur3 =Number($(this)["0"].innerHTML);
 			// Tolérance de +- degrés
 			if((valeur3>ensol-5) && (valeur3 < ensol+5)){
 				$(this).css('background-color', 'green');

@@ -23,9 +23,17 @@ def job():
     print("ensoleillement")
     print(ensoleillement)
 
-
+def job2():
+    database.cursor.execute("TRUNCATE TABLE ensoleillement")
+    database.db.commit()
+    database.cursor.execute("TRUNCATE TABLE humidite")
+    database.db.commit()
+    database.cursor.execute("TRUNCATE TABLE temperature")
+    database.db.commit()
+    print("tables vidéees");
 
 schedule.every(3).seconds.do(job)
+schedule.every(5).minutes.do(job2)
 while 1:
     schedule.run_pending()
     time.sleep(1)
