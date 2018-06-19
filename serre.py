@@ -41,7 +41,7 @@ if nom != 'None':
 
     database.db.commit()
     #On récupère l'ID que l'on vient d'insérer
-    database.cursor.execute("SELECT * FROM serre ORDER BY ID DESC  LIMIT 1")
+    database.cursor.execute("SELECT * FROM serre WHERE Nom LIKE '{0}' ORDER BY ID DESC  LIMIT 1".format( nom))
     results= database.cursor.fetchone()
     if results:
         IDSerre = int(results['ID'])
