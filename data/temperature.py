@@ -3,10 +3,13 @@ import json
 
 query1='SELECT * FROM temperature ORDER BY Heure LIMIT 20'
 query2='SELECT * FROM humidite ORDER BY Date LIMIT 20'
+query3='SELECT * FROm ensoleillement ORDER BY Date  LIMIT 20'
 database.cursor.execute(query1)
 results1 = database.cursor.fetchall()
 database.cursor.execute(query2)
 results2 = database.cursor.fetchall()
+database.cursor.execute(query3)
+results3 = database.cursor.fetchall()
 
 data = {}
 data["temperature"] = []

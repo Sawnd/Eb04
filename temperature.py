@@ -25,6 +25,12 @@ for h in results2:
     hum['temps'] = h['Date'].strftime('%Y-%m-%dT%H:%M:%S')
     data["humidites"].append(hum)
 
+for e in results3:
+    ens = {}
+    ens['valeur'] = e['Valeur']
+    ens['temps'] = e['Date'].strftime('%Y-%m-%dT%H:%M:%S')
+    data["ensoleillement"].append(ens)
+
 print("""
     """)
 #print(html.header)

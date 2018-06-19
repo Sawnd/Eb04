@@ -42,6 +42,13 @@ var chart = new CanvasJS.Chart("chartContainer", {
 			showInLegend: true,
 			name: "Humidite" ,
 			dataPoints: dataPoints2
+	},{
+			type: "line",
+			xValueType: "dateTime",
+			yValueFormatString: "####.00",
+			showInLegend: true,
+			name: "Ensoleillement" ,
+			dataPoints: dataPoints3
 	}]
 });
 function changeColor() {
@@ -138,6 +145,10 @@ if(isInit!=null){
 	dataPoints2.push({
 		x: d2.getTime(),
 		y: yValue2
+	});
+	dataPoints3.push({
+		x: d2.getTime(),
+		y: yValue2/2
 	});
 
 	}
