@@ -3,12 +3,14 @@ import database
 import schedule
 import time
 import random
+import brightness2
 
 
 def job():
     temperature = random.randint(-10,90)
     humidite = random.randint(0,100)
-    ensoleillement = random.randint(0,100)
+    #ensoleillement = random.randint(0,100)
+    ensoleillement=brightness2.m()
     database.cursor.execute("INSERT INTO temperature (Valeur) VALUES ('%d') " % temperature)
     database.db.commit()
     print("temperature")
@@ -32,7 +34,7 @@ def job2():
     database.db.commit()
     print("tables vidéees");
 
-schedule.every(3).seconds.do(job)
+schedule.every(10).seconds.do(job)
 schedule.every(5).minutes.do(job2)
 while 1:
     schedule.run_pending()
